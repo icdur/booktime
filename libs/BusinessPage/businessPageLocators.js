@@ -8,5 +8,6 @@ BusinessPageLocatorsNS.containerBookingSlots = by.className('mt-slot-container')
 BusinessPageLocatorsNS.itemBookingSlot = by.className('slot');
 BusinessPageLocatorsNS.itemSlotTime = by.className('time');
 BusinessPageLocatorsNS.itemReservedSlotTime = by.className('summary-appointment-time');
+BusinessPageLocatorsNS.linkHeader = by.tagName('li');
 
 module.exports = BusinessPageLocatorsNS;

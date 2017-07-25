@@ -50,11 +50,11 @@ BusinessPageNS.getNumberOfBookingSlots = function () {
 /**
  * Return first booking slot element from the page and the time for it
  */
-BusinessPageNS.getFirstBookingSlot = function () {
+BusinessPageNS.getFirstBookingSlot = function (itemIndex) {
     var deferred = protractor.promise.defer();
     browser.findElements(businessPageLocators.itemBookingSlot).then(function(items){
-        items[0].findElement(businessPageLocators.itemSlotTime).getText().then(function(time){
-            deferred.fulfill([items[0],time]);
+        items[itemIndex].findElement(businessPageLocators.itemSlotTime).getText().then(function(time){
+            deferred.fulfill([items[itemIndex],time]);
         });
     });
 
@@ -68,6 +68,18 @@ BusinessPageNS.getBookingReservedTime = function () {
     waitFunctions.waitForElement(businessPageLocators.itemReservedSlotTime);
     return browser.findElement(businessPageLocators.itemReservedSlotTime).getText();
 };
+
+/**
+ * Press pick a time link
+ */
+BusinessPageNS.pressPickTime = function () {
+
+    waitFunctions.waitForElement(by.css('.list-inline.fixed-item-top-nav-content'));
+    browser.findElement(by.css('.list-inline.fixed-item-top-nav-content')).findElements(businessPageLocators.linkHeader).then(function(items){
+        items[2].click();
+    });
+};
+
 module.exports = BusinessPageNS;
 
 

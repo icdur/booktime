@@ -28,8 +28,85 @@ describe('myTime - ', function () {
         expect(businessPage.getNumberOfBookingSlots()).toBeGreaterThan(1);
 
 
-        var slotElem = businessPage.getFirstBookingSlot();
+        var slotElem = businessPage.getFirstBookingSlot(0);
         slotElem.then(function(slot){
+            // 7. Choose the first time slot
+            slot[0].click();
+
+            // 8. Verify the appointment time on the next page matches the time selected
+            expect(businessPage.getBookingReservedTime()).toContain(slot[1]);
+        });
+    });
+
+    it('Book scenario 2', function () {
+        var service = 'Haircut',
+            location = 'Seattle, WA';
+
+        // 1. Open the www.mytime.com home page
+        navigate.goToDashBoard();
+
+        // 2. Search for “haircut” in “seattle, wa”
+        dashBoard.performSearch(service,location);
+
+        // 3. Verify that multiple results are shown
+        expect(searchResults.getNumberOfTotalResults()).toBeGreaterThan(1);
+
+        // 4. Click the name of the first available business
+        searchResults.selectFirstBusiness();
+
+        // 5. On the next screen click the “Book” button for the “Haircut” service
+        businessPage.pressBookService(service);
+
+        // 6. Verify that the user is presented with a list of available time slots with at least 2 entries
+        expect(businessPage.getNumberOfBookingSlots()).toBeGreaterThan(1);
+
+
+        var slotElem = businessPage.getFirstBookingSlot(1);
+        slotElem.then(function(slot){
+            // 7. Choose the first time slot
+            slot[0].click();
+
+            // 8. Verify the appointment time on the next page matches the time selected
+            expect(businessPage.getBookingReservedTime()).toContain(slot[1]);
+        });
+    });
+
+    it('Book scenario 2', function () {
+        var service = 'Haircut',
+            location = 'Seattle, WA';
+
+        // 1. Open the www.mytime.com home page
+        navigate.goToDashBoard();
+
+        // 2. Search for “haircut” in “seattle, wa”
+        dashBoard.performSearch(service,location);
+
+        // 3. Verify that multiple results are shown
+        expect(searchResults.getNumberOfTotalResults()).toBeGreaterThan(1);
+
+        // 4. Click the name of the first available business
+        searchResults.selectFirstBusiness();
+
+        // 5. On the next screen click the “Book” button for the “Haircut” service
+        businessPage.pressBookService(service);
+
+        // 6. Verify that the user is presented with a list of available time slots with at least 2 entries
+        expect(businessPage.getNumberOfBookingSlots()).toBeGreaterThan(1);
+
+
+        var slotElem = businessPage.getFirstBookingSlot(0);
+        slotElem.then(function(slot){
+            // 7. Choose the first time slot
+            slot[0].click();
+
+            // 8. Verify the appointment time on the next page matches the time selected
+            expect(businessPage.getBookingReservedTime()).toContain(slot[1]);
+        });
+
+        businessPage.pressPickTime();
+
+        var slotEl = businessPage.getFirstBookingSlot(1);
+        slotEl.then(function(slot){
             // 7. Choose the first time slot
             slot[0].click();
 
