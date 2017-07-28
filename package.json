@@ -1,0 +1,29 @@
+{
+  "name": "booktime",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "protractor": "^5.1.2",
+    "selenium-standalone": "^6.5.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "protractor": "./node_modules/.bin/protractor",
+    "selenium-standalone": "./node_modules/.bin/selenium-standalone"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/icdur/booktime.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/icdur/booktime/issues"
+  },
+  "homepage": "https://github.com/icdur/booktime#readme"
+}

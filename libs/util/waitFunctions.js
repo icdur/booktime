@@ -7,7 +7,7 @@ var waitFunctionsNS = {};
  */
 waitFunctionsNS.waitForElement = function (elem) {
     browser.driver.wait(function () {
-        return browser.driver.isElementPresent(elem);
+        return browser.driver.findElements(elem);
     }, 30000);
 };
 
